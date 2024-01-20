@@ -47,4 +47,3 @@ else {
 }
 
 Start-Sleep -Seconds 1.5
-EXIT
