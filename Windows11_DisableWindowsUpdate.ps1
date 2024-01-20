@@ -1,10 +1,11 @@
+Set-ExecutionPolicy Bypass -Force
 function Set-ConsoleColor ($bc, $fc) {
     $Host.UI.RawUI.BackgroundColor = $bc
     $Host.UI.RawUI.ForegroundColor = $fc
     Clear-Host
 }
 Set-ConsoleColor 'Black' 'Green'
-Set-ExecutionPolicy Bypass -Force
+
 #Disable Windows Update in services.msc
 Stop-Service -Name wuauserv; 
 Write-Host 'Windows Update Services has STOPPED' -ForegroundColor Green; 
@@ -44,3 +45,6 @@ if ($regkeyexists) {
 else {
     Write-Host "Registry key does not exist." -ForegroundColor Green; 
 }
+
+Start-Sleep -Seconds 1.5
+EXIT
