@@ -1,6 +1,6 @@
 $WirelessNetworkSSID = 'ssid_name';
 $WirelessNetworkPassword = 'ssid_password';
-$Authentication = 'WPA2PSK'; # This could also be WEP, WPA, WPA2, or WPA3
+$Authentication = 'WPA2PSK'; # This could also be WEP, WPA, WPA2, or WPA3. So make sure to change the value
 $Encryption = 'AES';
 
 $WirelessProfile = @'
