@@ -1,4 +1,3 @@
-
 ssid_name=itsm.getParameter('ssid_name')
 ssid_name=itsm.getParameter('ssid_password')
 
