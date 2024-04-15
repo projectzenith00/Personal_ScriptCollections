@@ -45,7 +45,7 @@ For ($i = $fl + 1; $i -le $lines.Length; $i++)
 
 $upgradeablePackages | Format-Table
 
-$SkipThis = @('Microsoft.Edge','Microsoft.dotnetRuntime','Microsoft.dotnet',)
+$SkipThis = @('Microsoft.Edge','Microsoft.dotnetRuntime','Microsoft.dotnet')
 
 foreach ($package in $upgradeablePackages) 
 {
