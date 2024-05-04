@@ -20,3 +20,15 @@ function Uninstall-PackageByName {
 # Usage example
 $packageName = "YouTube"
 Uninstall-PackageByName -packageName $packageName
+
+############################################
+# Bulk uninstall packages from the array list using winget
+$packageIDs=@('id_1',
+'id_2',
+'id_3'
+)
+
+foreach ($packageID in $packageIDs) 
+    {
+        winget uninstall -e --id $packageID --silent --force
+    }
