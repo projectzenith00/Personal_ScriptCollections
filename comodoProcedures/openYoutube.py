@@ -1,3 +1,5 @@
+#curl -L "https://raw.githubusercontent.com/projectzenith00/Personal_ScriptCollections/main/comodoProcedures/openYoutube.py?token=GHSAT0AAAAAACSTN7ASJ6NEDYPM6ZXVYSHCZSNFL3A" --output
+
 Youtube_url = "https://www.youtube.com/watch?v=8AaxrGKvoQY" 
 import os
 import subprocess
