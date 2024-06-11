@@ -7,4 +7,5 @@ Get-PnpDevice -Class 'Media', 'AudioEndpoint' -PresentOnly -Status 'OK' | Select
 
 #Example: Disable keyboard
 
-Get-PnpDevice  -PresentOnly | WHERE { $_.FriendlyName -Like "*KEYBOARD*" } | Select-Object -Property InstanceID;
+$disableKeyboard = Get-PnpDevice  -PresentOnly | WHERE { $_.FriendlyName -Like "*KEYBOARD*" } | Select-Object -Property InstanceID;
+Disable-PnpDevice -InstanceId $disableKeyboard;
