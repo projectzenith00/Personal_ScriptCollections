@@ -29,6 +29,7 @@ function sendEmailReminder() {
           'Reminder: Fire Drill Event Tomorrow' + startTime, 
           'Hi\n\nAre you prepared for the meeting tomorrow?');
 
+        // Mark this guest as emailed for this event
         PropertiesService.getScriptProperties().setProperty(guestProperty, 'true');
       }
     });
