@@ -1,3 +1,4 @@
+# Note: Run this script as Admin
 $targetDirectory = "C:\Users";
 
 Get-ChildItem -force $targetDirectory -ErrorAction SilentlyContinue | ? { $_ -is [io.directoryinfo] } | ForEach-Object {
