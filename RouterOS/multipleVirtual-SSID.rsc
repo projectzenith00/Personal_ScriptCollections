@@ -5,7 +5,7 @@
 # Details:
 # 
 # Ethernet port 1 is the ISP connection port
-# Ethernet 2-4 and wlan1-Work are bridge all together
+# Ethernet ports 2, 3, 4 and virtual AP ("wlan1-Work") are in the same bridge
 # 5 Virtual Access Points under WLAN1 interface: "Work Devices WiFi", "Entertainment Devices WiFi", "Guest WiFi", "Mobile 1 WiFi", "Mobile 2 WiFi"
 # 
 # // **************************************************** //
