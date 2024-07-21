@@ -1,16 +1,17 @@
+# // **************************************************** //
+# 
 # RouterOS script for multiple virtual SSID. 
-
-# // **************************************************** //
 # 
+# Details:
 # 
-# // Details:
-# 
-# // Ethernet port 1 is the ISP connection port
-# // Ethernet 2-4 and wlan1-Work are bridge all together
-# // 5 Virtual Access Points under WLAN1 interface: "Work Devices WiFi", "Entertainment Devices WiFi", "Guest WiFi", "Mobile 1 WiFi", "Mobile 2 WiFi"
-# 
+# Ethernet port 1 is the ISP connection port
+# Ethernet 2-4 and wlan1-Work are bridge all together
+# 5 Virtual Access Points under WLAN1 interface: "Work Devices WiFi", "Entertainment Devices WiFi", "Guest WiFi", "Mobile 1 WiFi", "Mobile 2 WiFi"
 # 
 # // **************************************************** //
+# 
+# 
+# 
 # jul/22/2024 03:58:12 by RouterOS 6.48.6
 # software id = QCDL-K0L6
 #
