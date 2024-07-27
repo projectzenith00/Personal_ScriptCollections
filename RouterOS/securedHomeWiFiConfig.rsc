@@ -5,7 +5,7 @@
 # serial number = HCV085W8SDB
 
 # RouterOS Configuration Details
-# 
+
 # 1. Multiple Virtual Wireless AP under wlan1 interface 
 # 2. Bridged wlan1-Work with ethernet port 2-4
 # 3. Added Simple Queues
