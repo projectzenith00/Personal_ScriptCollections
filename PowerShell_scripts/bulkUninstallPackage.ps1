@@ -1,5 +1,8 @@
-# Bulk uninstall packages with the same name using winget
+# Different Options to bulk uninstall packages using PowerShell and winget
+
+# Option 1
 # Function to uninstall packages with the same name
+
 function Uninstall-PackageByName {
     param(
         [string]$packageName
@@ -21,8 +24,12 @@ function Uninstall-PackageByName {
 $packageName = "YouTube"
 Uninstall-PackageByName -packageName $packageName
 
-############################################
-# Bulk uninstall packages from the array list using winget
+
+####################################################################################################################################
+
+# Option 2 
+# Function to uninstall packages from the array list using winget
+
 $packageIDs=@('id_1',
 'id_2',
 'id_3'
@@ -30,5 +37,5 @@ $packageIDs=@('id_1',
 
 foreach ($packageID in $packageIDs) 
     {
-        winget uninstall -e --id $packageID --silent --force
+        winget uninstall -e --id $packageID --silent --accept-source-agreements;
     }
