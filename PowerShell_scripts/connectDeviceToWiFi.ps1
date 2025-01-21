@@ -1,39 +1,41 @@
-$WirelessNetworkSSID = 'ssid_name';
-$WirelessNetworkPassword = 'ssid_password';
-$Authentication = 'WPA2PSK'; # This could also be WEP, WPA, WPA2, or WPA3. So make sure to change the value
-$Encryption = 'AES';
-
-$WirelessProfile = @'
+$wifiName = "Wi-Fi Name"; #Replace with the correct Wi-Fi name
+$wifiPassword = "Wi-Fi Password"; #Replace with the correct Wi-Fi password
+ 
+# Create a Wi-Fi profile
+$Profile = @"
+<?xml version="1.0"?>
 <WLANProfile xmlns="http://www.microsoft.com/networking/WLAN/profile/v1">
-	<name>{0}</name>
-	<SSIDConfig>
-		<SSID>
-			<name>{0}</name>
-		</SSID>
-	</SSIDConfig>
-	<connectionType>ESS</connectionType>
-	<connectionMode>auto</connectionMode>
-	<MSM>
-		<security>
-			<authEncryption>
-				<authentication>{2}</authentication>
-				<encryption>{3}</encryption>
-				<useOneX>false</useOneX>
-			</authEncryption>
-			<sharedKey>
-				<keyType>passPhrase</keyType>
-				<protected>false</protected>
-				<keyMaterial>{1}</keyMaterial>
-			</sharedKey>
-		</security>
-	</MSM>
+  <name>$wifiName</name>
+  <SSIDConfig>
+    <SSID>
+      <name>$wifiName</name>
+    </SSID>
+  </SSIDConfig>
+  <connectionType>ESS</connectionType>
+  <connectionMode>manual</connectionMode>
+  <MSM>
+    <security>
+      <authEncryption>
+        <authentication>WPA2PSK</authentication>
+        <encryption>AES</encryption>
+        <useOneX>false</useOneX>
+      </authEncryption>
+      <sharedKey>
+        <keyType>passPhrase</keyType>
+        <protected>false</protected>
+        <keyMaterial>$wifiPassword</keyMaterial>
+      </sharedKey>
+    </security>
+  </MSM>
 </WLANProfile>
-'@ -f $WirelessNetworkSSID, $WirelessNetworkPassword, $Authentication, $Encryption;
-
-$random = Get-Random –Minimum 1 –Maximum 99999999;
-$tempProfileXML = "$ENV:USERPROFILE\$random.xml";
-$WirelessProfile | Out-File $tempProfileXML;
-
-Start-Process netsh ('wlan add profile filename={0}' -f $tempProfileXML);
-
-Start-Process netsh ('wlan connect name="{0}"' -f $WirelessNetworkSSID);
+"@
+ 
+# Export the profile to an XML file
+$Profile | Out-File -FilePath "$env:USERPROFILE\$wifiName.xml";
+ 
+# Add the profile to the Wi-Fi interface
+netsh wlan add profile filename="$env:USERPROFILE\$wifiName.xml";
+  
+# Connect to the Wi-Fi network
+netsh wlan connect name="$wifiName";
+Remove-Item -Path "$env:USERPROFILE\$wifiName.xml" -Force;
