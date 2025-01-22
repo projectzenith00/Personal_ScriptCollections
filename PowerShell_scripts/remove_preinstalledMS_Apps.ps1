@@ -1,3 +1,5 @@
+winget list -q "MS";
+
 $packageIDs=@(
 'ARP\Machine\X64\O365HomePremRetail - en-us',
 'ARP\Machine\X64\O365HomePremRetail - es-es',
