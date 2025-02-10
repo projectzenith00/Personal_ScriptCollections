@@ -16,7 +16,7 @@ function getByPackageIDs {
 
     foreach ($packageID in $packageIDs) 
         {
-            winget uninstall -e --id $packageID --silent --accept-source-agreements;
+            winget uninstall -e --id $packageID --silent --accept-source-agreements --accept-package-agreements;
         } 
 }
 
