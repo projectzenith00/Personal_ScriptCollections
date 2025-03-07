@@ -1,39 +1,12 @@
-# Define the event log name and new maximum size (in KB)
-$LogName = "Application"  # Change this to the desired event log (e.g., System, Security, etc.)
-$NewMaxSizeKB = 512000  # Set the new log size in KB (500 MB in this example)
+# PowerShell script to update file size of an Event Log. 
+# Note it's better to just use MB when setting the new file size.
+# "-as [Int]" will interpret the string to a number.
 
-# Check the current log size
-$CurrentLog = Get-EventLog -LogName $LogName -List
-Write-Output "Current Log Size: $($CurrentLog.MaximumKilobytes) KB"
+$LogName = "Application"; # Name of the Event Log
+$NewMaxSize = 500MB -as [Int]; # Set the new file size of the event log here.
 
-# Set the new maximum log size
-wevtutil sl $LogName /ms:$NewMaxSizeKB
+Limit-EventLog -LogName "Application" -MaximumSize $NewMaxSize; 
 
-# Verify the change
-$UpdatedLog = Get-EventLog -LogName $LogName -List
-Write-Output "Updated Log Size: $($UpdatedLog.MaximumKilobytes) KB"
+Get-EventLog -List | Where-Object Log -eq Application | Select Log, MaximumKiloBytes | Format-Table; 
 
-
-
-# BLCKBOX
-
-
-# Define the log name and the new maximum size (in bytes)
-$logName = "Application"
-$newMaxSize = 10485760  # 10 MB (10 * 1024 * 1024)
-
-# Get the event log
-$eventLog = Get-WinEvent -ListLog $logName
-
-# Check if the log exists
-if ($eventLog) {
-    # Set the new maximum size
-    $eventLog.MaximumSizeInBytes = $newMaxSize
-
-    # Save the changes
-    $eventLog | Set-WinEventLog
-
-    Write-Host "Successfully increased the size of the '$logName' log to $($newMaxSize / 1MB) MB."
-} else {
-    Write-Host "The log '$logName' does not exist."
-}
+Write-Host "Sucessfully updated file size:"$LogName;
